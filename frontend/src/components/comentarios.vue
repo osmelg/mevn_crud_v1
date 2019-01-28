@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <router-link to='../views/crearcomentario'>Crear Comentario</router-link><hr>
       <p>{{comentarioError}}</p>
       <div class="usuarios" v-for="comentario of comentarios" :key="comentario._id">
         <h2>ID: {{comentario._id}}</h2>
@@ -12,6 +11,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data(){
     return({

@@ -84,7 +84,7 @@
                 })
             }) 
 // Mongoose
-    mongoose.connect('mongodb://localhost/mevncrud',{useNewUrlParser:true},(error)=>{
+    mongoose.connect('mongodb://localhost/mevn_crud_v1',{useNewUrlParser:true},(error)=>{
         if(error){
             throw error;
         }else{
