@@ -18,27 +18,27 @@
     // CRUD
         // Home
             app.get('/',(req,res) =>{
-                res.send('Bienvenido al Back End de el Mevn Crud');
+                res.send('bienvenido al mevn_crud_v1');
             })
         // GET 
-            app.get('/api/comentarios',(req,res)=>{
+            app.get('/comentarios',(req,res)=>{
                 Comentarios.find({})
                     .exec(function(error,comentarios){
                         if(error){
-                            res.json({respuesta:'getComentariosError'});
+                            res.json({rs:'getComentariosError'});
                         }else{
                             res.json(comentarios);
                         }
                     })
             })
         // GET ONE
-            app.get('/api/comentario/:id',function(req,res){
+            app.get('/comentario/:id',function(req,res){
                 Comentarios.findOne({
                     _id:req.params.id
                 })
                 .exec(function(error,comentario){
                     if(error){
-                        res.json({respuesta:'getComentarioError'});
+                        res.json({rs:'getComentarioError'});
                     }
                     else{
                         res.json(comentario);
@@ -46,40 +46,40 @@
                 })
             })
         // POST
-            app.post('/api/crearcomentario', (req, res) => {
+            app.post('/crearcomentario', (req, res) => {
                 const comentario = new Comentarios();
                     comentario.titulo = req.body.titulo;
                     comentario.comentario = req.body.comentario;
                     comentario.save(function (error) {
                         if (error) {
-                            res.json({respuesta:'postComentarioError'});
+                            res.json({rs:'crearComentarioError'});
                         } else {
-                            res.json({respuesta: 'comentarioCreado'});
+                            res.json({rs: 'comentarioCreado'});
                         }
                     })
             }) 
         // PUT 
-            app.put('/api/comentario/:id',(req,res)=>{
+            app.put('/comentario/:id',(req,res)=>{
                 Comentarios.findOneAndUpdate({
                     _id:req.params.id
                 },
                 {$set:{titulo:req.body.titulo,comentario:req.body.comentario}},{ upsert: true },function(error,comentarioActualizado){
                     if(error){
-                        res.json({respuesta:'putComentarioError'});
+                        res.json({rs:'putComentarioError'});
                     }else{
-                        res.json({respuesta:'comentarioActualizado'});
+                        res.json({rs:'comentarioActualizado'});
                     }
                 })
             })
         // DELETE 
-            app.delete('/api/comentario/:id',(req,res)=>{
+            app.delete('/comentario/:id',(req,res)=>{
                 Comentarios.findOneAndDelete({
                     _id:req.params.id
                 },(error,comentarioEliminado)=>{
                     if(error){
-                        res.json({respuesta:'deleteComentarioEliminado'});
+                        res.json({rs:'deleteComentarioError'});
                     }else{
-                        res.json({respuesta:'comentarioEliminado'})
+                        res.json({rs:'comentarioEliminado'})
                     }
                 })
             }) 

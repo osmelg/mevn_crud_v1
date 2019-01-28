@@ -11,7 +11,7 @@ export default new Router({
   routes: [
     {path: '*', redirect:'/'},
     { path: '/',name: 'home',component: Home},
-    { path: '/api/comentario/:id',name: 'comentario',component: comentario},
-    { path: '/api/crearcomentario',name: 'crearcomentario',component: crearcomentario}
+    { path: '/comentario/:id',name: 'comentario',component: comentario},
+    { path: '/crearcomentario',name: 'crearcomentario',component: crearcomentario}
   ]
 })
